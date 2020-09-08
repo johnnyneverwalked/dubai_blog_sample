@@ -1,0 +1,51 @@
+<button *ngIf="href === null"
+        class="btn {{class}} {{color}} btn-{{color}} position-relative {{small? 'btn-sm' : ''}} {{full? 'btn-block' : ''}}"
+        [class.round]="displayName == ''"
+        type="button"
+        [disabled]="disabled"
+        [ngbTooltip]="tooltip"
+        [container]="'body'"
+        (click)="btnClick.emit()">
+
+  <i class="la mr-1 ml-0" [ngClass]="icon"
+     [class.m-0]="displayName == ''"
+     *ngIf="!iconRightSide && !!icon && !(icons?.length)">
+  </i>
+  <ng-container *ngIf="icons?.length">
+    <i class="la" [ngClass]="ic"
+       *ngFor="let ic of icons"
+       [class.m-0]="displayName == ''">
+    </i>
+  </ng-container>
+  <span>{{displayName}}</span>
+  <i class="la mr-0 ml-1"
+     [ngClass]="icon"
+     *ngIf="iconRightSide && !!icon" [class.m-0]="displayName == ''"></i>
+</button>
+
+
+<a *ngIf="href !== null"
+   class="btn {{class}} {{color}} btn-{{color}} position-relative {{small? 'btn-sm' : ''}} {{full? 'btn-block' : ''}}"
+   [class.disabled]="disabled"
+   [routerLink]="href"
+   [target]="target"
+   [ngbTooltip]="tooltip"
+   [class.round]="displayName == ''"
+   (click)="btnClick.emit()"
+   [queryParams]="queryParams">
+
+  <i class="la mr-1" [ngClass]="icon"
+     [class.m-0]="displayName == ''"
+     *ngIf="!iconRightSide && !!icon && !(icons?.length)">
+  </i>
+  <ng-container *ngIf="icons?.length">
+    <i class="la" [ngClass]="ic"
+       *ngFor="let ic of icons"
+       [class.m-0]="displayName == ''">
+    </i>
+  </ng-container>
+  <span>{{displayName}}</span>
+  <i class="la mr-0 ml-1"
+     [ngClass]="icon"
+     *ngIf="iconRightSide && !!icon" [class.m-0]="displayName == ''"></i>
+</a>

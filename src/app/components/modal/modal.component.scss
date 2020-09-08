@@ -1,0 +1,64 @@
+.app-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.app-modal-container {
+  position: relative;
+  @extend .absolute-center;
+}
+
+.app-modal {
+  .app-modal-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .app-modal-content {
+    background-color: white;
+    border-radius: 10px;
+
+    position: absolute;
+    @extend .absolute-center;
+
+    &.full-width {
+      min-width: calc(100% - 60px) !important; // 30px each side
+      max-width: calc(100% - 60px) !important; // 30px each side
+    }
+
+    &.full-height {
+      min-height: calc(100vh - 60px) !important; // 30px each side
+      max-height: calc(100vh - 60px) !important; // 30px each side
+    }
+
+    .header {
+      border-bottom: solid 1px rgba(222, 228, 255, 0.9);
+    }
+
+    .footer {
+      .presets {
+        ::ng-deep {
+          button {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      border-top: solid 1px #FFDEE2E6;
+    }
+  }
+}
+
+.absolute-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

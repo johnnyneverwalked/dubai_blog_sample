@@ -1,1 +1,115 @@
-/* You can add global styles to this file, and also import other style files */
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+.cursor-pointer {
+  cursor: pointer!important;
+}
+
+.pointer {
+  cursor: pointer!important;
+}
+
+@for $i from 1 through 50 {
+  .font-size-#{$i} {
+    font-size: #{$i}px !important;
+  }
+}
+
+.custom-scroller {
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: lighten(#000, 75%);
+    border-radius: 5px;
+    &:hover {
+      background: lighten(#000, 65%);
+    }
+    &:active {
+      background: lighten(#000, 50%);
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: lighten(#000, 90%);
+    border-radius: 8px;
+  }
+}
+
+.horizontal-scrollbar {
+  padding: 2px;
+  @extend .custom-scroller;
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+}
+
+.hidden-scroller {
+  &::-webkit-scrollbar {
+    display: none
+  }
+}
+
+
+
+.btn {
+  &:disabled {
+    opacity: .35!important;
+  }
+}
+
+.btn-circle {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 28px;
+  height: 28px;
+  line-height: 3528;
+  font-size: 0.9rem;
+}
+
+.border-radius {
+  border-radius: 10px;
+}
+
+.border-radius-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.border-radius-bottom {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.basic-hover:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-filter: brightness(90%);
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  transition: all .1s ease;
+}

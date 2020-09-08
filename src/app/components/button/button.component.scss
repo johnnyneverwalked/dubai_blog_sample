@@ -1,0 +1,26 @@
+
+a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.round {
+  height: 38px;
+  width: 38px;
+  padding: 0 0 0 5px;
+  border-radius: 50%;
+  line-height: 0;
+
+  &.btn-sm {
+    height: 28px;
+    width: 28px;
+    &.vsm {
+      height: 20px!important;
+      width: 20px!important;
+    }
+  }
+  &.btn-lg {
+    height: 58px;
+    width: 58px;
+  }
+}

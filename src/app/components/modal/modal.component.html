@@ -1,0 +1,33 @@
+<div class="app-modal-wrapper" *ngIf="opened">
+  <div class="app-modal">
+    <div class="app-modal-backdrop" (click)="onBackdropClose()"></div>
+    <div [@fade] class="app-modal-content shadow d-flex flex-column justify-content-between"
+         [ngStyle]="{'min-width': '600px'}"
+         [class.full-width]="fullWidth"
+         [class.full-height]="fullHeight">
+
+      <div *ngIf="hasHeader" class="header p-3">
+        <div class="d-flex align-items-center">
+          <div class="flex-grow-1 align-self-center">
+            <h4 class="font-weight-bold m-0" *ngIf="headerTitle !== null">
+              {{headerTitle}}
+            </h4>
+            <ng-content select="[header]"></ng-content>
+          </div>
+          <div class="flex-shrink-1" *ngIf="hasClose">
+            <app-button action="close" displayName="" (btnClick)="hide()"></app-button>
+          </div>
+        </div>
+      </div>
+      <div class="body flex-fill custom-scroller position-relative mr-1 my-1 p-3 overflow-y-auto"
+           #body>
+          <ng-content select="[body]"></ng-content>
+      </div>
+      <div class="footer p-3" *ngIf="hasFooter">
+        <ng-container #footer>
+          <ng-content select="[footer]"></ng-content>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

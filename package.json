@@ -3,11 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o --port=4300",
+    "start-back": "node backend/index.js",
+    "start-back-dev": "nodemon backend/index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "author": {
+    "email": "john.stamtsidis@gmail.com",
+    "name": "John Stamtsidis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnnyneverwalked/dubai_blog_sample"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +29,14 @@
     "@angular/platform-browser": "~10.0.14",
     "@angular/platform-browser-dynamic": "~10.0.14",
     "@angular/router": "~10.0.14",
+    "dotenv": "^8.2.0",
+    "express": "~4.11.x",
+    "kerberos": "*",
+    "parse": "~1.11.1",
+    "parse-dashboard": "^2.1.0",
+    "parse-server": "~2.7.4",
     "rxjs": "~6.5.5",
+    "simple-parallax-js": "^5.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
@@ -27,9 +44,9 @@
     "@angular-devkit/build-angular": "~0.1000.8",
     "@angular/cli": "~10.0.8",
     "@angular/compiler-cli": "~10.0.14",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -38,6 +55,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "nodemon": "^2.0.4",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
