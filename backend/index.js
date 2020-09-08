@@ -8,6 +8,7 @@ var path = require('path');
 require("dotenv").config({path: path.join(__dirname + "/../.env")});
 
 var databaseUri = process.env.MONGODB_URI;
+console.log(process.env.MONGODB_URI);
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
