@@ -5,7 +5,7 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var ParseDashboard = require('parse-dashboard');
 var path = require('path');
-require("dotenv").config({path: path.join(__dirname, "/.env")});
+require("dotenv").config({path: path.join(__dirname + "/../.env")});
 
 var databaseUri = process.env.MONGODB_URI;
 
@@ -44,8 +44,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/dashboard', dashboard);
 
 // Serve the Parse API on the /parse URL prefix
-var mountPath = process.env.PARSE_MOUNT || '/parse';
-app.use(mountPath, api);
+app.use('/parse', api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
