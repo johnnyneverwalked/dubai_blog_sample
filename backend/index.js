@@ -9,6 +9,7 @@ const path = require('path');
 require("dotenv").config({path: path.join(__dirname + "/../.env")});
 
 const landmarkRoutes = require("./routes/landmarkRoutes")
+const auth = require("./routes/authRoutes")
 
 const databaseUri = process.env.MONGODB_URI;
 
@@ -47,6 +48,9 @@ app.use('/dashboard', dashboard);
 
 // Serve the Parse API on the /parse URL prefix
 app.use('/parse', api);
+
+// make auth routes available at /auth
+app.use("/auth", auth)
 
 // make Landmark CRUD routes available at /landmarks
 app.use("/landmarks", landmarkRoutes)

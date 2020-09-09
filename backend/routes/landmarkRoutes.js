@@ -44,7 +44,7 @@ router.put("/update/:_id", async (req, res) => {
       .first()
 
     if (!result) {
-      res.json({success: false, error: `Landmark with id [${req.params._id}] not found.`})
+      res.json({success: false, error: {message: `Landmark with id [${req.params._id}] not found.`, code: 404}})
       return;
     }
 
