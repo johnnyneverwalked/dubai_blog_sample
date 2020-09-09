@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require("express").Router();
+const checkSuperUser = require("./auth").isSuperUser;
 const Parse = require("parse/node");
 Parse._initialize(process.env.APP_ID, "", process.env.MASTER_KEY)
 

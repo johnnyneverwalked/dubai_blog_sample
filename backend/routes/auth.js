@@ -41,4 +41,8 @@ router.post("/signup", async (req, res) => {
   }
 })
 
-module.exports = router;
+module.exports = {
+  router,
+  isLoggedIn: null,
+  isSuperUser: null
+};

@@ -8,8 +8,8 @@ const ParseDashboard = require('parse-dashboard');
 const path = require('path');
 require("dotenv").config({path: path.join(__dirname + "/../.env")});
 
-const landmarkRoutes = require("./routes/landmarkRoutes")
-const auth = require("./routes/authRoutes")
+const auth = require("./routes/auth");
+const landmarkRoutes = require("./routes/landmarkRoutes");
 
 const databaseUri = process.env.MONGODB_URI;
 
@@ -50,7 +50,7 @@ app.use('/dashboard', dashboard);
 app.use('/parse', api);
 
 // make auth routes available at /auth
-app.use("/auth", auth)
+app.use("/auth", auth.router)
 
 // make Landmark CRUD routes available at /landmarks
 app.use("/landmarks", landmarkRoutes)
