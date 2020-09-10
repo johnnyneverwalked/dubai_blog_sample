@@ -31,6 +31,7 @@
     "@angular/router": "~10.0.14",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@nicky-lenaers/ngx-scroll-to": "^9.0.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "dotenv": "^8.2.0",
     "express": "~4.11.x",

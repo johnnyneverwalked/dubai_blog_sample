@@ -1,11 +1,17 @@
-const express = require("express");
 const router = require("express").Router();
 const checkSuperUser = require("./auth").isSuperUser;
+const authenticate = require("./auth").authenticate;
 const Parse = require("parse/node");
 Parse._initialize(process.env.APP_ID, "", process.env.MASTER_KEY)
 
 const Landark = Parse.Object.extend("Landmark")
 
+const editable = [
+  "title",
+  "short_info",
+  "description",
+  "photo"
+]
 
 // ? retrieve
 router.get("/", async (req, res) => {
@@ -36,10 +42,9 @@ router.get("/findById/:_id", async (req, res) => {
 })
 
 // ? update
-router.put("/update/:_id", async (req, res) => {
+router.put("/update/:_id", authenticate, checkSuperUser, async (req, res) => {
   try {
-    // TODO validate user is admin
-
+    console.log(req.user);
     const result = await new Parse.Query(Landark)
       .equalTo("objectId", req.params._id)
       .first()
@@ -50,7 +55,9 @@ router.put("/update/:_id", async (req, res) => {
     }
 
     for (let key in (req.body || {})) {
-      // TODO prevent update from adding new columns to the schema (?????????????)
+      if (!editable.includes(key)) {
+        continue;
+      }
       result.set(key, req.body[key]);
     }
 
