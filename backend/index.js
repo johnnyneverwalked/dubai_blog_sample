@@ -2,6 +2,7 @@
 // compatible API routes.
 
 const express = require('express');
+const cors = require("cors");
 const jsonParser = require("body-parser").json()
 const ParseServer = require('parse-server').ParseServer;
 const ParseDashboard = require('parse-dashboard');
@@ -40,6 +41,7 @@ const dashboard = new ParseDashboard({
 
 const app = express();
 app.use(jsonParser);
+app.use(cors({origin: "*"}));
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
