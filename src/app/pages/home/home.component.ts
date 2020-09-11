@@ -12,13 +12,18 @@ export class HomeComponent implements OnInit {
 
   @ViewChild("bg", {static: true}) bgImage: ElementRef;
 
+  public landmarks = [];
+
   constructor(private landmarksService: LandmarksService) { }
 
   ngOnInit(): void {
-    new parallax.default(this.bgImage.nativeElement, {scale: 1.5, delay: 0.8});
+    new parallax.default(this.bgImage.nativeElement, {scale: 1.5, delay: 0.4});
     this.landmarksService.retrieve().subscribe((res: any) => {
-      console.log(res);
+      if (res.success) {
+        this.landmarks = res.data;
+      }
     })
+    window.scrollTo({top: 0})
   }
 
 }

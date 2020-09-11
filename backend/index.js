@@ -29,7 +29,7 @@ const api = new ParseServer({
 const dashboard = new ParseDashboard({
   "apps": [
     {
-      "serverURL": process.env.SERVER_URL || 'http://localhost:5000/parse',
+      "serverURL": process.env.SERVER_URL || 'http://localhost:5000',
       "appId": process.env.APP_ID || 'myAppId',
       "masterKey": process.env.MASTER_KEY || '',
       "appName": process.env.APP_NAME || "MyApp",

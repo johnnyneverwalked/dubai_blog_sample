@@ -1,7 +1,27 @@
 <div class="container-fluid p-0">
   <div class="row">
-    <div class="col">
-      <img src="assets/bg/dubai-bg.jpg" width="100%" alt="image" #bg>
+    <div class="col overflow-hidden" [ngStyle]="{'max-height': '800px'}">
+      <img src="assets/bg/dubai-bg.jpg" width="100%" class="img-fluid" alt="image" #bg>
+      <app-divider-skew></app-divider-skew>
     </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col text-center">
+      <h3 class=" divider">Welcome to Dubai</h3>
+      <p class="container">
+        Dubai is unlike anywhere else on the planet.
+        With its bold architecture and audacious style,
+        the United Arab Emirates’ largest city is a distinct
+        fusion of its Bedouin heritage and an ultramodern style all its own.
+        Dubai doesn’t just live up to its reputation; it will completely exceed your expectations.
+        Explore the glitz and glam, and then uncover the ancient traditions of this multifaceted city.
+      </p>
+      <h4 class="divider"><i class="la la-monument"></i></h4>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <app-landmark-card *ngFor="let landmark of landmarks" [class]="'my-5'" [landmark]="landmark"></app-landmark-card>
   </div>
 </div>

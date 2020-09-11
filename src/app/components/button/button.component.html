@@ -3,8 +3,7 @@
         [class.round]="displayName == ''"
         type="button"
         [disabled]="disabled"
-        [ngbTooltip]="tooltip"
-        [container]="'body'"
+        [title]="tooltip || ''"
         (click)="btnClick.emit()">
 
   <i class="la mr-1 ml-0" [ngClass]="icon"
@@ -29,7 +28,7 @@
    [class.disabled]="disabled"
    [routerLink]="href"
    [target]="target"
-   [ngbTooltip]="tooltip"
+   [title]="tooltip || ''"
    [class.round]="displayName == ''"
    (click)="btnClick.emit()"
    [queryParams]="queryParams">

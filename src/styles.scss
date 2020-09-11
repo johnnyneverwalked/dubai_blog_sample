@@ -1,3 +1,7 @@
+body {
+  font-family: Raleway, sans-serif !important;
+}
+
 .overflow-y-auto {
   overflow-y: auto !important;
 }
@@ -112,4 +116,52 @@
   -o-transition: all .1s ease;
   -ms-transition: all .1s ease;
   transition: all .1s ease;
+}
+
+.theme-bg {
+  background-color: #182952!important;
+  color: white!important;
+}
+
+.theme-main {
+  background-color: #252e83!important;
+  color: white!important;
+}
+
+.theme-complement {
+  background-color: #7045af!important;
+  border: none!important;
+  color: white!important;
+}
+
+.theme-complement-light {
+  background-color: #e14594!important;
+  color: black!important;
+}
+
+.divider {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 30%;
+    }
+
+    &::before {
+      background: linear-gradient(to right, rgba(240,240,240,0), #fff);
+      margin-right: 4vh;
+    }
+
+    &::after {
+      background: linear-gradient(to left, rgba(240,240,240,0), #fff);
+      margin-left: 4vh;
+    }
+
 }

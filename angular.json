@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/assets/fonts/stylesheet.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/line-awesome/dist/line-awesome/css/line-awesome.css"
             ],
@@ -77,12 +78,6 @@
             "production": {
               "browserTarget": "dubaiBlog:build:production"
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "dubaiBlog:build"
           }
         },
         "test": {
