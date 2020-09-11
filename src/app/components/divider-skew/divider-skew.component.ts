@@ -9,6 +9,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 export class DividerSkewComponent implements OnInit {
 
   @Input() mirrored: boolean;
+  @Input() inversed: boolean;
 
   constructor() { }
 

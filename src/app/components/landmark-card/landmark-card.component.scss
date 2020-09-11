@@ -4,3 +4,13 @@
   transform: translate(-50%, -50%);
   left: 50%;
 }
+
+.rotate-hover{
+  transform:matrix(1,0,0,1,0,0);
+  transition:transform .2s ease-in-out 0s;
+
+  &:hover {
+    transform:matrix(1.2,0.2,-0.2,1.2,0,0);
+  }
+}
+

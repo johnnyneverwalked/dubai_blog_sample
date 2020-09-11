@@ -1,4 +1,4 @@
-<div class="card shadow-lg {{class}} border-dark position-relative">
+<div class="card- shadow-lg {{class}} border-radius border-dark position-relative">
 
   <div class="c-title">
     <app-button action="view"
@@ -7,7 +7,17 @@
     </app-button>
   </div>
   <div class="card-body pt-5 theme-main">
-    {{landmark.short_info}}
+    <div class="row">
+
+      <div class="col-12 text-center text-lg-left col-lg-4 pb-lg-0 pb-3">
+        <img alt="thumbnail" class="rotate-hover" src="https://via.placeholder.com/250">
+      </div>
+      <div class="col">
+        {{landmark.short_info}}
+      </div>
+    </div>
   </div>
-  <div class="card-header text-center theme-bg">{{landmark.title}}</div>
+  <div class="card-footer text-center theme-bg">
+    <a href="{{landmark.url}}" target="_blank">More info <i class="la la-external-link"></i></a>
+  </div>
 </div>

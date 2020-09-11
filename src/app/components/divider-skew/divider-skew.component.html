@@ -1,12 +1,30 @@
-<svg *ngIf="!mirrored" xmlns="http://www.w3.org/2000/svg" class="skew-position" viewBox="0 0 1440 320">
-  <path fill="#182952"
-        fill-opacity="1"
-        d="M0,288L1440,160L1440,320L0,320Z">
-  </path>
-</svg>
-<svg *ngIf="mirrored" xmlns="http://www.w3.org/2000/svg" class="skew-position" viewBox="0 0 1440 320">
-  <path fill="#182952"
-        fill-opacity="1"
-        d="M0,160L1440,288L1440,320L0,320Z">
-  </path>
-</svg>
+<ng-container *ngIf="!inversed">
+  <svg *ngIf="!mirrored" xmlns="http://www.w3.org/2000/svg" class="skew-position" viewBox="0 0 1440 320">
+    <path fill="#182952"
+          fill-opacity="1"
+          d="M0,288L1440,160L1440,320L0,320Z">
+    </path>
+  </svg>
+  <svg *ngIf="mirrored" xmlns="http://www.w3.org/2000/svg" class="skew-position" viewBox="0 0 1440 320">
+    <path fill="#182952"
+          fill-opacity="1"
+          d="M0,160L1440,288L1440,320L0,320Z">
+    </path>
+  </svg>
+</ng-container>
+
+<ng-container *ngIf="inversed">
+  <svg *ngIf="!mirrored" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#182952"
+          fill-opacity="1"
+          d="M0,288L1440,160L1440,0L0,0Z">
+    </path>
+  </svg>
+  <svg *ngIf="mirrored" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#182952"
+          fill-opacity="1"
+          d="M0,160L1440,288L1440,0L0,0Z">
+    </path>
+  </svg>
+</ng-container>
+

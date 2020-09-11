@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavBarModule} from "./components/nav-bar/nav-bar.module";
 import {HttpClientModule} from "@angular/common/http";
+import {DividerSkewModule} from "./components/divider-skew/divider-skew.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NavBarModule
+    NavBarModule,
+    DividerSkewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

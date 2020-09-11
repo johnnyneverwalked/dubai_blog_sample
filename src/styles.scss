@@ -165,3 +165,34 @@ body {
     }
 
 }
+
+.text-entrance {
+  -webkit-animation: text-entrance 1s both;
+  animation: text-entrance 1s both;
+}
+
+@-webkit-keyframes text-entrance {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes text-entrance {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
