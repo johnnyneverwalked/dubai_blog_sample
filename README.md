@@ -19,7 +19,7 @@ Open a terminal and cd to the project directory.
 npm install
 npm run start 
 ```
-On a terminal:
+On another terminal:
 ```
 npm run start-back
 ```
