@@ -6,7 +6,7 @@ export interface ILandmark {
   location: {
     latitude: number;
     longitude: number;
-  }
+  };
   order: number;
   url: string;
   photo: File|any;

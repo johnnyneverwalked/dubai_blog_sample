@@ -10,7 +10,7 @@ const routes: Route[] = [
     component: HomeComponent,
     path: ""
   }
-]
+];
 
 @NgModule({
   declarations: [HomeComponent],

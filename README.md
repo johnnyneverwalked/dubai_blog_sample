@@ -1,27 +1,40 @@
 # DubaiBlog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+This is a responsive sample blog site showcasing some of Dubai's landmarks. It was built using the MEAN Stack and ParseServer.
 
-## Development server
+## Requirements
+Please note that these are the versions used to create the project. You might be able to run it with other versions too.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* npm 6.14.4
+* node v10.19.0
+* Parse server v2.7.4
+* Angular 10
 
-## Code scaffolding
+## How to run
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Make sure to add an `.env` file to the root of the project
 
-## Build
+Open a terminal and cd to the project directory.
+```
+npm install
+npm run start 
+```
+On a terminal:
+```
+npm run start-back
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Angular will be running at `http://localhost:4300/`.
 
-## Running unit tests
+The API will be running at `http://localhost:5000/`.
+*Make sure to change Angular's `environment` if your `.env`'s `SERVER_URL` differs from `http://localhost:5000/`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Navigate to `http://localhost:5000/dashboard` for the Parse dashboard.
 
-## Running end-to-end tests
+## Other info
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Everyone can view the landmarks on the site but only a user with super access (that means they have the Superuser role) can edit them.
 
-## Further help
+The admin can also upload photos for the landmarks (max photo size is 5MB).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Sample DB Admin user credentials: `username:admin` `password:admin`.

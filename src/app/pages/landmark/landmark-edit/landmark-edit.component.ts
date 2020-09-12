@@ -104,7 +104,21 @@ export class LandmarkEditComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.form.patchValue({photo: evt.addedFiles[0]});
       }, 100);
+    } else if (evt.rejectedFiles.length) {
+      swal.fire({
+        title: "Oops!",
+        icon: "error",
+        text: evt.rejectedFiles[0].reason === "size"
+          ? "The photo is too large..."
+          : evt.rejectedFiles[0].reason === "type"
+            ? "This file type is not supported..."
+            : "Something went wrong...",
+        timer: 3000,
+        showConfirmButton: false
+      });
     }
+
+    console.log(evt);
   }
 
 }

@@ -3,7 +3,7 @@
   <div class="col">
     <small class="position-absolute" [ngStyle]="{'z-index': 1}"
            *ngIf="!landmark?.photo?.url">No image</small>
-    <img class="main-image pointer"
+    <img class="main-image"
          #photo
          src="{{landmark?.photo?.url || 'assets/bg/placeholder.jpg'}}">
     <app-divider-skew></app-divider-skew>
