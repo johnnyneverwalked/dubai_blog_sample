@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild} from "@angular/core";
 import {fade} from "../../animations/enter-leave.animation";
+import {NavigationService} from '../../services/navigation/navigation.service';
 
 @Component({
   selector: "app-modal",
@@ -40,17 +41,22 @@ export class ModalComponent {
     }
   }
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(
+    private cd: ChangeDetectorRef,
+    private nav: NavigationService
+  ) {
   }
 
   public show() {
     this.opened = true;
+    this.nav.disabledNav$.next(this.nav.disabledNav$.value + 1);
     this.open.emit();
     this.cd.markForCheck();
   }
 
   public hide() {
     this.opened = false;
+    this.nav.disabledNav$.next(this.nav.disabledNav$.value - 1);
     this.close.emit();
     this.cd.markForCheck();
   }
@@ -58,6 +64,7 @@ export class ModalComponent {
   public onBackdropClose() {
     if (this.closeWithBackdrop && this.opened) {
       this.opened = false;
+      this.nav.disabledNav$.next(this.nav.disabledNav$.value - 1);
       this.close.emit();
       this.backdropClose.emit();
       this.cd.markForCheck();

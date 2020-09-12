@@ -12,7 +12,7 @@ require("dotenv").config({path: path.join(__dirname + "/../.env")});
 const auth = require("./routes/auth");
 const landmarkRoutes = require("./routes/landmarkRoutes");
 
-const databaseUri = process.env.MONGODB_URI;
+const databaseUri = process.env.DB_URI;
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');

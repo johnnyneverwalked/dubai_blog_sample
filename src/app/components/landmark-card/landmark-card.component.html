@@ -1,23 +1,46 @@
-<div class="card- shadow-lg {{class}} border-radius border-dark position-relative">
+<div class="card card-custom {{class}} position-relative">
 
-  <div class="c-title">
-    <app-button action="view"
-                class="theme-complement basic-hover"
-                displayName="{{landmark.title}}">
-    </app-button>
-  </div>
-  <div class="card-body pt-5 theme-main">
+  <div class="card-body shadow-lg theme-main">
     <div class="row">
-
-      <div class="col-12 text-center text-lg-left col-lg-4 pb-lg-0 pb-3">
-        <img alt="thumbnail" class="rotate-hover" src="https://via.placeholder.com/250">
+      <div class="col-12 text-center align-self-center text-lg-left col-lg-4 pb-lg-0 pb-3">
+        <img alt="thumbnail"
+             (click)="photoModal.show()"
+             width="250"
+             height="250"
+             title="preview photo"
+             class="rotate-hover pointer border-radius"
+             [class.img-placeholder]="!landmark.photo_thumb?.url"
+             src="{{landmark.photo_thumb?.url || 'https://via.placeholder.com/250'}}">
       </div>
       <div class="col">
-        {{landmark.short_info}}
+        <h4 class="font-weight-bold divider text-center">
+          <a class="text-white text-pop-up-top"
+             title="See the full article"
+             [routerLink]="['landmark', landmark.objectId]">
+            {{landmark.title}}
+          </a>
+        </h4>
+        <p>
+          {{landmark.short_info}}
+        </p>
+        <app-button action="edit"
+                    *ngIf="auth.user?.superAccess"
+                    class="basic-hover"
+                    [routerLink]="['landmark', landmark.objectId, 'edit']">
+        </app-button>
       </div>
     </div>
   </div>
-  <div class="card-footer text-center theme-bg">
-    <a href="{{landmark.url}}" target="_blank">More info <i class="la la-external-link"></i></a>
-  </div>
 </div>
+
+<app-modal #photoModal
+           [hasFooter]="false"
+           headerTitle="{{landmark.title}} - Photo preview"
+           [fullHeight]="true"
+           [fullWidth]="true">
+  <ng-container body>
+    <div class="container-fluid text-center">
+      <img src="{{landmark.photo?.url || 'https://via.placeholder.com/250'}}">
+    </div>
+  </ng-container>
+</app-modal>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ILandmark} from "../../interfaces/ILandmark";
+import {AuthService} from '../../services/http/auth.service';
 
 @Component({
   selector: 'app-landmark-card',
@@ -11,7 +12,9 @@ export class LandmarkCardComponent implements OnInit {
   @Input() landmark: ILandmark;
   @Input() class: string = "";
 
-  constructor() { }
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
   }

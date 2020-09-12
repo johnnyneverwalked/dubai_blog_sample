@@ -6,6 +6,10 @@ const routes: Routes = [
     path: "",
     loadChildren: () => import("./pages/home/home.module").then(m => m.HomeModule)
   },
+  {
+    path: "landmark",
+    loadChildren: () => import("./pages/landmark/landmark.module").then(m => m.LandmarkModule)
+  },
 ];
 
 @NgModule({

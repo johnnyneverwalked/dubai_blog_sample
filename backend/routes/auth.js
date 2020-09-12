@@ -28,28 +28,35 @@ const authenticate = async (req, res, next) => {
   }
 }
 
+
+const _superAccess = async (_user) => {
+  const role = await new Parse.Query(Parse.Object.extend("_Role"))
+    .equalTo("name", "Superuser")
+    .first({useMasterKey: true});
+
+  if (!role) {
+    return false;
+  }
+
+  const user = await new Parse.Relation(role, "users")
+    .query()
+    .equalTo("objectId", _user)
+    .first({useMasterKey: true});
+
+  if (!user) {
+    return false;
+  }
+  return true;
+}
 const isSuperUser = async (req, res, next) => {
   try {
     if (!req._user) {
       res.sendStatus(401);
       return;
     }
-    console.log(req._user);
-    const role = await new Parse.Query(Parse.Object.extend("_Role"))
-        .equalTo("name", "Superuser")
-        .first({useMasterKey: true});
+    const superAccess = await _superAccess(req._user);
 
-    if (!role) {
-      res.sendStatus(401);
-      return;
-    }
-
-    const user = await new Parse.Relation(role, "users")
-      .query()
-      .equalTo("objectId", req._user)
-      .first({useMasterKey: true});
-
-    if (!user) {
+    if (!superAccess) {
       res.sendStatus(401);
       return;
     }
@@ -72,8 +79,8 @@ router.post("/login", async (req, res) => {
       res.json({success: false, error: {code: 401, message: "Login failed."}});
       return;
     }
-
-    res.json({success: true, data: user})
+    const superAccess = await _superAccess(user.id);
+    res.json({success: true, data: user, superAccess})
   } catch (e) {
     console.error(e);
     res.json({success: false, error: e})
@@ -91,7 +98,8 @@ router.get("/status", authenticate, async (req, res) => {
       res.sendStatus(401);
       return;
     }
-    res.json({success: true, user})
+    const superAccess = await _superAccess(req._user);
+    res.json({success: true, data: user, superAccess})
   } catch (e) {
     console.error(e);
     res.json({success: false, error: e})
@@ -101,17 +109,15 @@ router.get("/status", authenticate, async (req, res) => {
 // ? log out
 router.get("/logout", authenticate, async (req, res) => {
   try {
-    // TODO delet
+    // TODO configure mongo atlas to not prevent session destruction
     // const token = (req.headers.authorization || "").replace("Bearer ", "");
     // const session = await new Parse.Query(Parse.Object.extend("_Session"))
     //   .equalTo("sessionToken", token)
-    //   .find({useMasterKey: true});
+    //   .first({useMasterKey: true});
     // if (session) {
-    //   console.log(session);
-    //
-    //   await Parse.Object.destroyAll(session);
+    //   await session.destroy({useMasterKey: token});
     // }
-    res.sendStatus(200);
+    res.json({success: true})
   } catch (e) {
     console.error(e);
     res.json({success: false, error: e})

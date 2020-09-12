@@ -1,8 +1,7 @@
-<div class="app-modal-wrapper" *ngIf="opened">
+<div class="app-modal-wrapper text-dark" *ngIf="opened">
   <div class="app-modal">
     <div class="app-modal-backdrop" (click)="onBackdropClose()"></div>
-    <div [@fade] class="app-modal-content shadow d-flex flex-column justify-content-between"
-         [ngStyle]="{'min-width': '600px'}"
+    <div [@fade] class="app-modal-content modal-min-width shadow d-flex flex-column justify-content-between"
          [class.full-width]="fullWidth"
          [class.full-height]="fullHeight">
 

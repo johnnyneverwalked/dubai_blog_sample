@@ -1,7 +1,8 @@
 import {Injectable, OnDestroy} from "@angular/core";
 import {ScrollToService, ScrollToConfigOptions} from "@nicky-lenaers/ngx-scroll-to";
-import {Observable, Subject} from "rxjs";
-import {TabModel} from "../../interfaces/TabModel";
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {ModalComponent} from '../../components/modal/modal.component';
+import {ILandmark} from '../../interfaces/ILandmark';
 
 @Injectable({
     providedIn: "root",
@@ -10,6 +11,8 @@ import {TabModel} from "../../interfaces/TabModel";
 export class NavigationService implements OnDestroy{
 
     private _unsub$: Subject<void> = new Subject<void>();
+
+    public disabledNav$ = new BehaviorSubject<number>(0);
 
     constructor(
         private _scrollToService: ScrollToService
@@ -54,34 +57,6 @@ export class NavigationService implements OnDestroy{
         if (options) {
             return this._scrollToService.scrollTo(options);
         }
-    }
-
-    /**
-     * @param tabs
-     * @param activeTab
-     * @description Given an array of tabs returns the next tab of the active one
-     */
-    public pillsNavNext(tabs: TabModel[] = [], activeTab: string): string {
-        let active = activeTab;
-        let tab = tabs.findIndex(t => t.name === active);
-        if (tab < tabs.length - 1 && tab !== -1) {
-            active = tabs[tab + 1].name;
-        }
-        return active;
-    }
-
-    /**
-     * @param tabs
-     * @param activeTab
-     * @description Given an array of tabs returns the previous tab of the active one
-     */
-    public pillsNavPrevious(tabs: TabModel[] = [], activeTab: string = ""): string {
-        let active = activeTab;
-        let tab = tabs.findIndex(t => t.name === active);
-        if (tab > 0) {
-            active = tabs[tab - 1].name;
-        }
-        return active;
     }
 
 }

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col">
+    <small class="position-absolute" [ngStyle]="{'z-index': 1}"
+           *ngIf="!landmark?.photo?.url">No image</small>
+    <img title="Preview photo"
+         class="main-image pointet"
+         (click)="photoModal.show()"
+         #photo
+         src="{{landmark?.photo?.url || 'assets/bg/placeholder.jpg'}}">
+    <app-divider-skew (click)="photoModal.show()"></app-divider-skew>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col text-center">
+    <div class="p-3 border-circle shadow theme-complement d-inline-block">
+      <h4 class="m-0">{{landmark?.title}}</h4>
+    </div>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="card card-custom theme-main shadow">
+    <div class="card-body pt-5">
+      <div class="row my-3">
+        <div class="col-12 px-5">
+          <h5 class="divider text-center font-weight-bold"><i class="la mr-1 la-eye"></i> With a glimpse</h5>
+          <p>{{landmark?.short_info}}</p>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12 px-5">
+          <h5 class="divider text-center font-weight-bold"><i class="la mr-1 la-info-circle"></i> Information
+          </h5>
+          <p>{{landmark?.description}}</p>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12 px-3">
+          <h5 class="divider text-center font-weight-bold"><i class="la mr-1 la-map-marker"></i> Location</h5>
+          <div class="border border-radius" [ngStyle]="{'min-height': '300px'}" #mapContainer></div>
+        </div>
+      </div>
+      <div class="row my-3" *ngIf="landmark?.url">
+        <div class="col-12 pt-3 border-top text-center">
+          <a class="theme-complement basic-hover btn"
+             [href]="landmark?.url"
+             target="_blank">
+            <i class="la la-external-link"></i> Visit the official site
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-modal #photoModal
+           [hasFooter]="false"
+           headerTitle="{{landmark?.title}} - Photo preview"
+           [fullHeight]="true"
+           [fullWidth]="true">
+  <ng-container body>
+    <div class="container-fluid text-center">
+      <img src="{{landmark?.photo?.url || 'https://via.placeholder.com/500'}}">
+    </div>
+  </ng-container>
+</app-modal>

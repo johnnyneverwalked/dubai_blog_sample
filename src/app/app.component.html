@@ -1,22 +1,94 @@
-<div class="container-fluid vh-100 theme-bg text-white p-0">
-  <app-nav-bar></app-nav-bar>
-  <div class="flex-fill theme-bg overflow-y-auto overflow-x-hidden">
+<div class="container-fluid vh-100 theme-main custom-scroller text-white p-0">
+  <app-loader [loading]="loading" [fullScreen]="true" [random]="true"></app-loader>
+  <app-nav-bar (login)="loginForm?.patchValue({signup: false}); loginModal.show()"
+               (signup)="loginForm?.patchValue({signup: true}); loginModal.show()">
+  </app-nav-bar>
+  <div class="flex-fill theme-bg custom-scroller overflow-y-auto overflow-x-hidden">
     <div class="container-fluid p-0" [ngStyle]="{'margin-top': '58px'}">
       <router-outlet></router-outlet>
     </div>
-    <footer class="container-fluid text-white theme-main p-0">
-      <app-divider-skew [inversed]="true" [mirrored]="true"></app-divider-skew>
-      <div class="row">
-        <div class="col-12 text-center">
-          <img src="assets/favicon/favicon-32x32.png" class="mb-2" alt="logo">
-          <h5 class="divider m-0 ">Dubai's Treasures</h5>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-
-        </div>
-      </div>
-    </footer>
   </div>
+
+  <footer class="container-fluid text-white theme-main p-0 overflow-x-hidden">
+    <app-divider-skew [inversed]="true" [mirrored]="true"></app-divider-skew>
+    <div class="row">
+      <div class="col-12 text-center">
+        <img src="assets/favicon/favicon-32x32.png" class="my-2" alt="logo">
+        <h5 class="divider m-0 ">Dubai's Treasures</h5>
+      </div>
+    </div>
+    <div class="row text-center my-5">
+      <div class="col-lg border-right col-12">
+        <h5>ABOUT</h5>
+        <p class="my-3 mx-3">
+          This is a sample blog site showcasing some of Dubai's landmarks.
+          It was built using the MEAN Stack and ParseServer.
+        </p>
+      </div>
+      <div class="col-lg border-right col-12">
+        <h5>CONTACT</h5>
+        <ul class="list-unstyled">
+          <li class="my-1"><i class="la la-phone"></i> +30 123456789</li>
+          <li class="my-1"><i class="la la-envelope"></i> testmail@te.st</li>
+          <li class="my-1"><i class="la la-map-marker"></i> 1234, Dubai</li>
+        </ul>
+      </div>
+      <div class="col-lg col-12">
+        <h5>LINKS</h5>
+        <ul class="list-unstyled">
+          <li class="my-1">
+            <i class="la la-github"></i>
+            <a class="text-white"
+               target="_blank"
+               href="https://github.com/johnnyneverwalked">
+              johnnyneverwalked
+            </a>
+          </li>
+          <li class="my-1">
+            <i class="la la-linkedin-square"></i>
+            <a class="text-white"
+               target="_blank"
+               href="https://www.linkedin.com/in/john-stamtsidis-7737151a4">
+              John Stamtsidis
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </div>
+
+<app-modal #loginModal headerTitle="Login" [hasFooter]="true">
+  <ng-container body>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="row">
+        <div class="col form-group">
+          <label for="username">Username <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label for="password">Password <span class="text-danger">*</span></label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+      </div>
+      <div class="row" *ngIf="loginForm?.value.signup">
+        <div class="col form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="password">
+        </div>
+      </div>
+      <button type="submit" [hidden]="true"></button>
+    </form>
+  </ng-container>
+  <ng-container footer>
+    <div class="col text-right">
+      <app-button color="success"
+                  displayName="{{loginForm?.value.signup ? 'Sign up' : 'Login'}}"
+                  [disabled]="loginForm.invalid"
+                  (btnClick)="login()">
+      </app-button>
+    </div>
+  </ng-container>
+</app-modal>

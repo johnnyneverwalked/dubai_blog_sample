@@ -7,6 +7,11 @@
   z-index: 200;
 }
 
+.modal-min-width {min-width: 600px}
+@media screen and (max-width: 600px){
+  .modal-min-width {min-width: 90%}
+}
+
 .app-modal-container {
   position: relative;
   @extend .absolute-center;
@@ -23,6 +28,7 @@
   }
 
   .app-modal-content {
+
     background-color: white;
     border-radius: 10px;
 

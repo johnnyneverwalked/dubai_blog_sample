@@ -1,4 +1,5 @@
-<nav class="navbar fixed-top navbar-expand-md navbar-dark shadow theme-bg" #container>
+<nav class="navbar fixed-top navbar-expand-md navbar-dark shadow theme-bg"
+     [hidden]="navService.disabledNav$.getValue() > 0" #container>
   <a class="navbar-brand basic-hover px-1" [routerLink]="'/'">
     <img class="mr-2" src="assets/favicon/favicon-32x32.png">
     <span class="text-break">Dubai's Treasures</span>
@@ -10,9 +11,12 @@
   </button>
   <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto flex-nowrap">
-      <a class="nav-item nav-link">Hello, brother</a>
-      <a class="nav-item nav-link pointer">Login</a>
-      <a class="nav-item nav-link pointer">Logout</a>
+      <ng-container *ngIf="!!auth.user">
+        <span @pulsate class="nav-item nav-link">Hello, {{auth.user.username}}</span>
+        <a class="nav-item nav-link pointer" (click)="logout()">Logout</a>
+      </ng-container>
+      <a class="nav-item nav-link pointer" *ngIf="!auth.user" (click)="login.emit()">Login</a>
+      <a class="nav-item nav-link pointer" *ngIf="!auth.user" (click)="signup.emit()">Sign up</a>
     </div>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 
 export interface IModel {
-  _id?: string;
+  objectId?: string;
   createdAt?: string|Date|any;
   updatedAt?: string|Date|any;
 }

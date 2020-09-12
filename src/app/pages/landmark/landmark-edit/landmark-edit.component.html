@@ -1,0 +1,94 @@
+<app-loader [loading]="loading" [random]="true" [fullScreen]="true"></app-loader>
+<div class="row">
+  <div class="col">
+    <small class="position-absolute" [ngStyle]="{'z-index': 1}"
+           *ngIf="!landmark?.photo?.url">No image</small>
+    <img class="main-image pointer"
+         #photo
+         src="{{landmark?.photo?.url || 'assets/bg/placeholder.jpg'}}">
+    <app-divider-skew></app-divider-skew>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col text-center">
+    <div class="p-3 border-circle shadow theme-complement d-inline-block">
+      <h4 class="m-0"><i class="la la-pencil"></i> Edit mode</h4>
+    </div>
+  </div>
+</div>
+<form class="container mb-5" [formGroup]="form" *ngIf="form" (ngSubmit)="save()">
+  <button type="submit" [hidden]="true"></button>
+  <div class="card card-custom theme-main shadow">
+    <div class="card-body p-5">
+      <div class="row my-3">
+        <div class="col-12">
+          <h5 class="divider text-center font-weight-bold">Title</h5>
+        </div>
+        <div class="col-12">
+          <input type="text"
+                 formControlName="title"
+                 class="form-control themed"
+                 placeholder="Enter title (required)">
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          <h5 class="divider text-center font-weight-bold">Short info</h5>
+        </div>
+        <div class="col-12">
+          <textarea rows="5"
+                    formControlName="short_info"
+                    class="form-control themed custom-scroller">
+          </textarea>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          <h5 class="divider text-center font-weight-bold">Description</h5>
+        </div>
+        <div class="col-12">
+          <textarea rows="15"
+                    formControlName="description"
+                    class="form-control themed custom-scroller">
+          </textarea>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          <h5 class="divider text-center font-weight-bold">Official site url</h5>
+          <input type="text"
+                 formControlName="url"
+                 class="form-control themed"
+                 placeholder="Enter url">
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          <h5 class="divider text-center font-weight-bold">Upload a photo</h5>
+        </div>
+        <div class="col-12">
+          <ngx-dropzone class="theme-bg"
+                        [maxFileSize]="5 * 1024 * 1024"
+                        [multiple]="false"
+                        accept="image/*"
+                        (change)="dzChange($event)">
+            <ngx-dropzone-label> <i class="la la-photo"></i> Drag photo here! <br> (max size: 5MB)</ngx-dropzone-label>
+            <ngx-dropzone-image-preview [removable]="true"
+                                        (removed)="form.get('photo').reset()"
+                                        [file]="form.value.photo"
+                                        *ngIf="form.value.photo">
+              <ngx-dropzone-label>
+                {{ form.get('photo').value?.name }}
+              </ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col text-right">
+          <app-button action="save" [disabled]="form.invalid" (btnClick)="save()"></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

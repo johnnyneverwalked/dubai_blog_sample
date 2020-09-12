@@ -1,7 +1,6 @@
 import {IModel} from "./IModel";
 
 export interface IUser extends IModel {
-  [key: string]: any;
+  username: string;
+  superAccess?: boolean;
 }
-
-export const CURRENT_USER_ID = "__current__";

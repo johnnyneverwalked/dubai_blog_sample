@@ -31,7 +31,8 @@
               "src/styles.scss",
               "src/assets/fonts/stylesheet.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/line-awesome/dist/line-awesome/css/line-awesome.css"
+              "node_modules/line-awesome/dist/line-awesome/css/line-awesome.css",
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

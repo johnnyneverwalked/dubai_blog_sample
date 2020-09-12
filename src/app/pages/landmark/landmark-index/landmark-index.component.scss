@@ -1,0 +1,12 @@
+.main-image {
+  object-fit: cover;
+  height: 800px;
+  width: 100%;
+
+}
+
+@media only screen and (max-height: 800px) {
+  .main-image {
+    height: 300px
+  }
+}

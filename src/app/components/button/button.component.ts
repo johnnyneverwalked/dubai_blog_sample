@@ -68,7 +68,7 @@ export class ButtonComponent implements OnInit {
       color: "primary",
       displayName: "Edit",
       tooltip: "Edit",
-      icon: "la-save",
+      icon: "la-pencil",
     },
     delete: {
       color: "danger",
