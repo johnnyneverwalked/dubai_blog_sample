@@ -65,8 +65,12 @@ app.use("/landmarks", landmarkRoutes)
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+  res.status(200).send('Deployment works');
 });
+
+// Create link to Angular build directory
+var distDir = path.join(__dirname + "/../dist/");
+app.use(express.static(distDir));
 
 
 const port = process.env.SERVER_PORT || 5000;
