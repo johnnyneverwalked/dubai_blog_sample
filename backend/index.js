@@ -74,10 +74,10 @@ app.use(express.static(distDir));
 
 
 const port = process.env.SERVER_PORT || 5000;
-const httpServer = require('http').createServer(app);
-httpServer.listen(port, function() {
-    console.log('parse-server-example running on port ' + port + '.');
-});
+const httpServer = require('https').createServer(app);
+// httpServer.listen(port, function() {
+//     console.log('parse-server-example running on port ' + port + '.');
+// });
 
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
