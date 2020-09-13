@@ -67,7 +67,8 @@ app.use("/landmarks", landmarkRoutes)
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('Deployment works');
+  // res.status(200).send('Deployment works');
+  res.redirect("/index.html");
 });
 
 // Create link to Angular build directory
