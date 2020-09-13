@@ -15,7 +15,7 @@ chrome-profiler-events*.json
 speed-measure-plugin*.json
 
 # ENV
-../env.txt
+.env
 
 # IDEs and editors
 /.idea

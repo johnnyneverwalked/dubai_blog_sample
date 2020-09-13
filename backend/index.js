@@ -7,7 +7,7 @@ const jsonParser = require("body-parser").json()
 const ParseServer = require('parse-server').ParseServer;
 const ParseDashboard = require('parse-dashboard');
 const path = require('path');
-require("dotenv").config({path: path.join(__dirname + "/../env.txt")});
+require("dotenv").config({path: path.join(__dirname + "/../.env")});
 
 const auth = require("./routes/auth");
 const landmarkRoutes = require("./routes/landmarkRoutes");
