@@ -76,7 +76,7 @@ app.use(express.static(distDir));
 
 
 const port = process.env.PORT || process.env.SERVER_PORT || 5000;
-const httpServer = require('https').createServer(app);
+const httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
 });
