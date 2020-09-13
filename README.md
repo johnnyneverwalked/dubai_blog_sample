@@ -36,5 +36,3 @@ Navigate to `http://localhost:5000/dashboard` for the Parse dashboard.
 Everyone can view the landmarks on the site but only a user with super access (that means they have the Superuser role) can edit them.
 
 The admin can also upload photos for the landmarks (max photo size is 5MB).
-
-Sample DB Admin user credentials: `username:admin` `password:admin`.
