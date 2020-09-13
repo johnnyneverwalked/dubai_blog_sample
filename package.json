@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --port=4300",
-    "start-back": "node backend/index.js",
+    "start-front": "ng serve -o --port=4300",
+    "start": "node backend/index.js",
     "start-back-dev": "nodemon backend/index.js",
     "build": "ng build",
     "test": "ng test",

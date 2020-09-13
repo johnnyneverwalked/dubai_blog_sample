@@ -36,6 +36,12 @@ const dashboard = new ParseDashboard({
       "primaryBackgroundColor": "#ac1aa5",
       "secondaryBackgroundColor": "#1b65d4"
     }
+  ],
+  "users": [
+    {
+      "user": process.env.APP_USER || "admin",
+      "pass": process.env.APP_PASS || "admin"
+    }
   ]
 });
 
